@@ -208,4 +208,4 @@ fi
 
 ## Summary
 
-There are various elements that helps you perform different operations and actions of the device, the list is available [here](https://github.com/wix/Detox/blob/master/docs/README.md). Also tools like Detox, helps increase the speed and
+There are various elements that helps you perform different operations and actions of the device, the list is available [here](https://github.com/wix/Detox/blob/master/docs/README.md). Also tools like Detox, helps increase the speed and can be easily integrated with react native apps. The community is growing faster. Have you used Detox for mobile app testing?
