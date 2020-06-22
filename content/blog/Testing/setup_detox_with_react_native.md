@@ -139,6 +139,10 @@ Its always important maitain the folder structure, so that the effort is always 
 
 ![react-native](/images/envfile.jpg)
 
+- Add, testID for the element you want to perform action now. Move to the source code of your project, identify the element and add testID like below:
+
+  `testID={'basics'}`
+
 - We shall now modify our firstTest.e2e.js to verify some elements from the react welcome page
 
 ```describe('Verify the react welcome page elements', () => {
@@ -204,4 +208,4 @@ fi
 
 ## Summary
 
-There are various elements that helps you perform different operations and actions of the device, the list is available [here](https://github.com/wix/Detox/blob/master/docs/README.md)
+There are various elements that helps you perform different operations and actions of the device, the list is available [here](https://github.com/wix/Detox/blob/master/docs/README.md). Also tools like Detox, helps increase the speed and
