@@ -14,7 +14,7 @@ The reason for writing an article on mobile automation is to explain how to achi
 
 ## Why Detox?
 
-Detox an End to End testing library for applications which are developed using React Native and for pure native. It allows mobile tests to be performed by running a real device/simulator and showcasing the interaction like a real User.
+Detox an End to End testing library for applications which are developed using React Native and for pure native applications. It allows mobile tests to be performed by running a real device/simulator and showcasing the interaction like a real User.
 Less flaky
 Cross Platform, supports both android and ios
 Debuggable
@@ -30,43 +30,69 @@ Android
 
 > =0.57 <=0.62 - Visibility edge-case: see this RN issue\*
 
-Let's get Started
-Prerequisites:
-Mac with macOS
-Xcode
+### Let's get Started
 
-Step1: Install react-native
+#### Prerequisites:
 
-- `npm install react-native -g`
+- Mac with macOS
 
-Step 2: Setup react-native via command line
+- Xcode
 
-- `npx react-native init <project_Name>`
+#### Create a sample react-native application
+
+1. Install react-native
+
+```
+npm install react-native -g
+
+```
+
+2. Setup react-native via command line
+
+```
+npx react-native init <project_Name>
+
+```
 
 ![react-native](/images/reactnative.jpg)
 
-Step 2: Launch the app by navigating within your project
+3. Launch the app by navigating within your project
 
-- `react-native run-ios`
-  ![react-native](/images/setup.jpg)
+```
+react-native run-ios
 
-Step : Install the latest version of HomeBrew
+```
 
-- `brew tap wix/brew`
+![react-native](/images/setup.jpg)
 
-Step 2: Install the latest version of applesimutils
+4. Install the latest version of HomeBrew
 
-- `brew install applesimutils`
+```
+brew tap wix/brew
+```
 
-Step 3: Install Detox command line tool
+5. Install the latest version of applesimutils
 
-- `npm install -g detox-cli`
+```
+brew install applesimutils
+```
 
-Step 4: Add Detox as a dev dependency for the project
+6. Install Detox command line tool
 
-- `yarn add detox -D`
+```
+npm install -g detox-cli
+```
 
-- Lets add detox configuration in your project. Always try keeping the detox configuration seperate in your package.json file. I have added 2 configuration, one incase of debug mode to run it locally and one in release mode, while trying to integrate it with a CI/CD pipeline.
+7. Add Detox as a dev dependency for the project
+
+```
+   yarn add detox -D
+```
+
+#### Add Detox configuration
+
+Lets add detox configuration in your project.Always try keeping the detox configuration seperate in your package.json file.
+I have added 2 configuration, one incase of debug mode to run it locally and one in release mode, while trying to integrate it with a CI/CD pipeline.
 
 ```"detox": {
     "configurations": {
@@ -93,28 +119,41 @@ Step 4: Add Detox as a dev dependency for the project
 }
 ```
 
-Now,lets install a one of the framework either jest or mocha.
+Now, lets install a one of the framework either jest or mocha.
 
-Step 5: Install detox-cli for jest or mocha
+1. Install detox-cli for jest or mocha
 
-- `detox init -r jest` or `detox init -r mocha`
+```
+detox init -r jest
+```
+
+OR
+
+```
+detox init -r mocha
+```
 
 It will create a e2e folder in your project, with some basic test files which allows you to start writing your first script, init.js and some config files, wherein you can mention the type of reporting required.
 
-There are various reporter available, but I tried using jest-stare as it gives reports in both html and json format.
+There are various reporters available, but I tried using jest-stare as it gives reports in both html and json format.
 
-Step 6: Install [jest-stare](https://www.npmjs.com/package/jest-stare) reporting
+2. Install [jest-stare](https://www.npmjs.com/package/jest-stare) reporting
 
-`npm i jest-stare`
+```
+npm i jest-stare
+```
 
-Now, change the config.json file to you the reporter you just added. By defining the jest-stare reporter, e.g
+Now, change the `config.json` file to use the reporter you just added. By defining the jest-stare reporter, e.g
 
-`"reporters": ["../node_modules/jest-stare"]`
+```
+"reporters": ["../node_modules/jest-stare"]
+```
 
-Its always important maitain the folder structure, so that the effort is always streamlined, hence better to keep common things together. I have tried keeping the specs in one folder and user data in a seperate json file. Let's do it!
+Its always important to maitain the folder structure, so that the effort is always streamlined, hence better to keep common things together. I have tried keeping the specs in one folder and user data in a seperate json file. Let's do it!
 
 - Create sub-folder under e2e naming it specs and add all the specs file underneath
-  ![react-native](/images/config.jpg)
+
+![specs](/images/spec.png)
 
 - Create a json file under e2e mentioning it as users.json, wherein you will store all the user related information. As a part of testing we always need to keep in mind of having seperate user data for each environment. Why not make it configurable? Lets do that
   ![react-native](/images/users.jpg)
@@ -135,13 +174,15 @@ Its always important maitain the folder structure, so that the effort is always 
 }
 ```
 
-- Now, lets create a environment file and name it [testEnvConfig.js] wherein you will mention the environment specific data, like in our case we have users specific to environment
+- Now, lets create a environment file and name it `testEnvConfig.js` wherein you will mention the environment specific data, like in our case we have users specific to environment
 
 ![react-native](/images/envfile.jpg)
 
 - Add, testID for the element you want to perform action now. Move to the source code of your project, identify the element and add testID like below:
 
-  `testID={'basics'}`
+```
+  testID={'basics'}
+```
 
 - We shall now modify our firstTest.e2e.js to verify some elements from the react welcome page
 
@@ -164,29 +205,35 @@ Its always important maitain the folder structure, so that the effort is always 
 
 - Inorder to execute the tests, we first need to build the app using detox commands
 
-  `detox:build`
+```
+detox:build
+```
 
 - Followed by the command to run tests under specs folder, use
 
-  `detox:test e2e/specs`
+```
+detox:test e2e/specs
+```
 
-- This will now generate jest-stare folder within your project, which will have html and json, mentioning all the failed and passed testcases. Along with detail summary for test scenarios under the specs file
+- This will now generate jest-stare folder within your project, which will have html and json reporting file, mentioning all the failed and passed testcases. Along with detail summary for test scenarios under the specs file
 
 ## Whats next now?
 
-Yes, as promised we will see the functional tests written in detox to be integrated with CI/CD tools like appcenter. Having a automation scripts is wonderful, but would it make sense if there are error in code and scripts fail. But your app getting delivering to various environment. The most important part of having automation scripts is to reduce manual effort and having automation deployment and failing the deployments incase of errors.
+Yes, as promised we will see the functional tests written in detox to be integrated with CI/CD tools like appcenter. Having a automation scripts is wonderful, but would it make sense if there are error in code and scripts fail. But your app getting delivering to various environment. The most important part of having automation scripts is to reduce manual effort and having automated deployment and failing the deployments incase of errors.
 
-Every CI/CD has its own shell files. Incase of [appcenter](https://appcenter.ms/) we do have mutliple files for executing functions before build (post build), after build (pre-build), Post-clone and various others. Lets focus on pre-build file, wherein our app has started building, lets add our commands to execute E2E testing before building the app
+Every CI/CD has its own shell files. Incase of [appcenter](https://appcenter.ms/) we do have mutliple files for executing functions before build (post build), after build (pre-build), Post-clone and various others. Lets focus on pre-build file, wherein our app has started building, and then lets add our commands to execute E2E testing before building the app
 
-- Step 1: Build the app via detox
+- Build the app via detox
 
 ```echo "Building the project for Detox tests..."
 npx detox build --configuration ios.sim.release
 ```
 
-- Step 2: Execute our E2E tests via Detox, and notify appcenter incase of all tests passes and fails.
+- Step 2: Execute our E2E tests via Detox
 
-But is that enough? We still havent stopped the distribution of the app when your tests fails. Here a solution provided by appcenter, wherein you can use appcenters openAPI to cancel the build, using the token
+But is that enough?
+
+We still havent stopped the distribution of the app when your tests fails. Here's a solution provided by appcenter, wherein you can use appcenters openAPI to cancel the build, using the token
 
 ```echo "Executing Detox tests..."
 if npx detox test e2e/specs/firstspec.e2e.js --configuration ios.sim.release --cleanup; then
@@ -205,6 +252,8 @@ else
   exit
 fi
 ```
+
+Wahoo!! We have successfully implemented our e2e with CI/CD..
 
 ## Summary
 
