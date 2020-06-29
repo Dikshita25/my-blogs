@@ -2,7 +2,7 @@
 title: 'Quick Start'
 date: 2020-6-14 17:21:13
 category: 'development'
-draft: false
+draft: true
 ---
 
 # Getting Started 😎
