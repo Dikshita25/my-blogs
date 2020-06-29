@@ -1,6 +1,6 @@
 ---
 title: 'Setup Detox with React Native and Appcenter'
-date: 2020-6-14 17:21:13
+date: 2020-6-29 17:21:13
 category: 'development'
 draft: false
 ---
