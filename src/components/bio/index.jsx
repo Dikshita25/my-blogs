@@ -9,45 +9,72 @@ export const Bio = () => (
     query={bioQuery}
     render={data => {
       const { author, social, introduction } = data.site.siteMetadata
-
+      console.log(social)
       return (
-        <div className="bio">
-          <div className="author">
-            <div className="author-description">
+        <div className='bio'>
+          <div className='author'>
+            <div className='author-description'>
               <Image
-                className="author-image"
+                className='author-image'
                 fixed={data.avatar.childImageSharp.fixed}
                 alt={author}
                 style={{
                   borderRadius: `100%`,
                 }}
               />
-              <div className="author-name">
-                <span className="author-name-prefix">Written by</span>
-                <Link to={'/about'} className="author-name-content">
+              <div className='author-name'>
+                <span className='author-name-prefix'>Written by</span>
+                <Link to={'/about'} className='author-name-content'>
                   <span>@{author}</span>
                 </Link>
-                <div className="author-introduction">{introduction}</div>
-                <p className="author-socials">
+                <div className='author-introduction'>{introduction}</div>
+                <p className='author-socials'>
                   {social.github && (
-                    <a href={`https://github.com/${social.github}`}>GitHub</a>
+                    <a
+                      href={`https://github.com/${social.github}`}
+                      target='_blank'
+                    >
+                      GitHub
+                    </a>
                   )}
                   {social.medium && (
-                    <a href={`https://medium.com/${social.medium}`}>Medium</a>
+                    <a
+                      href={`https://medium.com/${social.medium}`}
+                      target='_blank'
+                    >
+                      Medium
+                    </a>
                   )}
                   {social.twitter && (
-                    <a href={`https://twitter.com/${social.twitter}`}>
+                    <a
+                      href={`https://twitter.com/${social.twitter}`}
+                      target='_blank'
+                    >
                       Twitter
                     </a>
                   )}
                   {social.facebook && (
-                    <a href={`https://www.facebook.com/${social.facebook}`}>
+                    <a
+                      href={`https://www.facebook.com/${social.facebook}`}
+                      target='_blank'
+                    >
                       Facebook
                     </a>
                   )}
                   {social.linkedin && (
-                    <a href={`https://www.linkedin.com/in/${social.linkedin}/`}>
+                    <a
+                      href={`https://www.linkedin.com/in/${social.linkedin}/`}
+                      target='_blank'
+                    >
                       LinkedIn
+                    </a>
+                  )}
+                  {social.stackoverflow && (
+                    <a
+                      href={`https://stackoverflow.com/users/${social.stackoverflow}`}
+                      target='_blank'
+                    >
+                      Stackoverflow
                     </a>
                   )}
                 </p>
@@ -79,6 +106,7 @@ const bioQuery = graphql`
           medium
           facebook
           linkedin
+          stackoverflow
         }
       }
     }

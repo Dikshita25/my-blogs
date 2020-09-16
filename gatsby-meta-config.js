@@ -5,11 +5,12 @@ module.exports = {
   introduction: `Let's learn, explain and make it simple!!..`,
   siteUrl: `https://gatsby-starter-bee.netlify.com`, // Your blog site url
   social: {
+    stackoverflow: '14286153/dikshita-shirodkar',
     twitter: ``, // Your Twitter account
-    github: ``, //Dikshita25
+    github: `Dikshita25`, //Dikshita25
     medium: ``, // Your Medium account
-    facebook: ``, // Your Facebook account
-    linkedin: ``, // Your LinkedIn account
+    facebook: `dikshitashirodkar25`, // Your Facebook account
+    linkedin: `dikshita-shirodkar-622301144`, // Your LinkedIn account
   },
   icon: `content/assets/felog.png`, // Add your favicon
   keywords: [`blog`],
@@ -21,10 +22,10 @@ module.exports = {
     countOfInitialPost: 10, // Config your initial count of post
   },
   sponsor: {
-    buyMeACoffeeId: 'jbee',
+    buyMeACoffeeId: '',
   },
   share: {
-    facebookAppId: '', // Add facebookAppId for using facebook share feature v3.2
+    facebookAppId: '359113785450598', // Add facebookAppId for using facebook share feature v3.2
   },
   ga: '', // Add your google analytics tranking ID
 }
