@@ -16,6 +16,7 @@ export default ({ data }) => {
       style={{
         marginLeft: `auto`,
         marginRight: `auto`,
+        fontFamily: 'Verdana',
         maxWidth: rhythm(24),
         padding: `${rhythm(0.5)} ${rhythm(3 / 4)} ${rhythm(1.5)} ${rhythm(
           3 / 4
