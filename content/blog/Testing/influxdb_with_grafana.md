@@ -1,6 +1,6 @@
 ---
 title: 'Fab things which could be done with InfluxDB & Grafana'
-date: 2020-6-29 17:21:13
+date: 2020-11-26 17:21:13
 category: 'development'
 draft: false
 ---
