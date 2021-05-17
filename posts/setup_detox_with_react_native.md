@@ -34,57 +34,72 @@ Android
 
 #### Prerequisites:
 
-- Mac with macOS
+<br>- Mac with macOS
+</br>
 
-- Xcode
+<br>- Xcode
+</br>
 
 #### Create a sample react-native application
 
-1. Install react-native
+<br> 1. Install react-native
 
 ```sh
 $ npm install react-native -g
 ```
 
-2. Setup react-native via command line
+</br>
+
+<br> 2. Setup react-native via command line
 
 ```sh
 $ npx react-native init <project_Name>
 ```
 
+</br>
+
 ![react-native](./images/reactnative.jpg)
 
-3. Launch the app by navigating within your project
+<br> 3. Launch the app by navigating within your project
 
 ```sh
 $ react-native run-ios
 ```
 
 ![react-native](/images/setup.jpg)
+</br>
 
-4. Install the latest version of HomeBrew
+<br> 4. Install the latest version of HomeBrew
 
 ```sh
 $ brew tap wix/brew
 ```
 
-5. Install the latest version of applesimutils
+</br>
+
+<br> 5. Install the latest version of applesimutils
 
 ```sh
 $ brew install applesimutils
 ```
 
-6. Install Detox command line tool
+</br>
+
+<br> 6. Install Detox command line tool
 
 ```sh
 $ npm install -g detox-cli
 ```
 
-7. Add Detox as a dev dependency for the project
+</br>
+
+<br> 7. Add Detox as a dev dependency for the project
 
 ```sh
 $ yarn add detox -D
 ```
+
+</br>
 
 #### Add Detox configuration
 
@@ -119,7 +134,7 @@ I have added 2 configuration, one incase of debug mode to run it locally and one
 
 Now, lets install a one of the framework either jest or mocha.
 
-1. Install detox-cli for jest or mocha
+<br> 1. Install detox-cli for jest or mocha
 
 ```sh
 $ detox init -r jest
@@ -135,13 +150,16 @@ It will create a e2e folder in your project, with some basic test files which al
 
 There are various reporters available, but I tried using jest-stare as it gives reports in both html and json format.
 
-2. Install [jest-stare](https://www.npmjs.com/package/jest-stare) reporting
+<br> 2. Install [jest-stare](https://www.npmjs.com/package/jest-stare) reporting
 
 ```sh
 $ npm i jest-stare
 ```
 
-Now, change the `config.json` file to use the reporter you just added. By defining the jest-stare reporter, e.g
+</br>
+
+<br> Now, change the `config.json` file to use the reporter you just added. By defining the jest-stare reporter, e.g
+</br>
 
 ```json
 "reporters": ["../node_modules/jest-stare"]
@@ -149,14 +167,16 @@ Now, change the `config.json` file to use the reporter you just added. By defini
 
 Its always important to maitain the folder structure, so that the effort is always streamlined, hence better to keep common things together. I have tried keeping the specs in one folder and user data in a seperate json file. Let's do it!
 
-- Create sub-folder under e2e naming it specs and add all the specs file underneath
+<br>- Create sub-folder under e2e naming it specs and add all the specs file underneath
+</br>
 
 ```
 e2e
 ├── specs
 ```
 
-- Create a json file under e2e mentioning it as users.json, wherein you will store all the user related information. As a part of testing we always need to keep in mind of having seperate user data for each environment. Why not make it configurable? Lets do that
+<br>- Create a json file under e2e mentioning it as users.json, wherein you will store all the user related information. As a part of testing we always need to keep in mind of having seperate user data for each environment. Why not make it configurable? Lets do that
+</br>
 
 ```
 e2e
@@ -181,19 +201,22 @@ e2e
 }
 ```
 
-- Now, lets create a environment file and name it `testEnvConfig.js` wherein you will mention the environment specific data, like in our case we have users specific to environment
+<br> - Now, lets create a environment file and name it `testEnvConfig.js` wherein you will mention the environment specific data, like in our case we have users specific to environment
+</br>
 
 ```js
 process.env.ENV_NAME = "dev"
 ```
 
-- Add, testID for the element you want to perform action now. Move to the source code of your project, identify the element and add testID like below:
+<br>- Add, testID for the element you want to perform action now. Move to the source code of your project, identify the element and add testID like below:
+</br>
 
 ```
   testID={'basics'}
 ```
 
-- We shall now modify our `firstTest.e2e.js` to verify some elements from the react welcome page
+<br>- We shall now modify our `firstTest.e2e.js` to verify some elements from the react welcome page
+</br>
 
 ```js
 describe("Verify the react welcome page elements", () => {
@@ -212,7 +235,8 @@ describe("Verify the react welcome page elements", () => {
 })
 ```
 
-- Inorder to execute the tests, we first need to build the app using detox commands
+<br>- Inorder to execute the tests, we first need to build the app using detox commands
+</br>
 
 ```sh
 $ detox:build
@@ -224,7 +248,8 @@ $ detox:build
 $ detox:test e2e/specs
 ```
 
-- This will now generate jest-stare folder within your project, which will have html and json reporting file, mentioning all the failed and passed testcases. Along with detail summary for test scenarios under the specs file
+<br>- This will now generate jest-stare folder within your project, which will have html and json reporting file, mentioning all the failed and passed testcases. Along with detail summary for test scenarios under the specs file
+</br>
 
 ## Whats next now?
 
@@ -232,15 +257,16 @@ Yes, as promised we will see the functional tests written in detox to be integra
 
 Every CI/CD has its own shell files. Incase of [appcenter](https://appcenter.ms/) we do have mutliple files for executing functions before build (post build), after build (pre-build), Post-clone and various others. Lets focus on `appcenter-pre-build.sh` file, wherein our app has started building, and then lets add our commands to execute E2E testing before building the app
 
-- Build the app via detox
+<br>- Build the app via detox
+</br>
 
 ```sh
 echo "Building the project for Detox tests..."
 npx detox build --configuration ios.sim.release
 ```
 
-- Step 2: Execute our E2E tests via Detox
-
+<br>- Step 2: Execute our E2E tests via Detox
+</br>
 But is that enough?
 
 We still havent stopped the distribution of the app when your tests fails. Here's a solution provided by appcenter, wherein you can use appcenters openAPI to cancel the build, using the token

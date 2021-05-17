@@ -1,6 +1,6 @@
 ---
 title: "Run front-end performance test using lighthouse with puppeteer + Git Actions"
-tags: ["git", "puppeteer", "nodejs", "javascript", "lighthouse"]
+tags: ["git", "puppeteer", "nodejs", "javascript", "lighthouse", "gatsby"]
 published: true
 date: "2021-05-11"
 ---
@@ -20,21 +20,21 @@ The ultimate desire of front-end performance is to provide what they need from t
 ### Factors impacting the performance
 
 There are various factors impacting the performance of any site. I tried listing some of them below:
+<br> - Unused CSS
+<br> - Unoptimized images
+<br> - Minimizing the http requests
+<br> - Cookie size
+<br> - Non-blocking javascripts
+<br> - Javascripts profiling
+<br> - And lots more
 
-- Unused CSS
-- Unoptimized images
-- Minimizing the http requests
-- Cookie size
-- Non-blocking javascripts
-- Javascripts profiling
-- And lots more
+### Different tools are available for testing the front-end performance
 
-### Different tools for available for testing the front-end performance
-
-- Lighthouse
-- Web Page Test
-- Pingdom
-- Jmeter
+Below are some listed:
+<br> - Lighthouse
+<br> - Web Page Test
+<br> - Pingdom
+<br> - Jmeter
 
 My personal favorite for front-end testing is Lighthouse. As it just doesn't tell you about the problem but also provides possible solutions to fix these problems.
 
@@ -46,19 +46,19 @@ Puppeteer is NodeJS library that provides a high-level API control over special 
 
 Lighthouse is integrated to Google Chrome. After collecting performance-related insights, the tool automatically compiles a report into a HTML support. Apart from presenting all collected data in a clear, concise way each report has a section dedicated to potential fixes of the detected issues.
 
-- Install Lighthouse
+<br> - Install Lighthouse
 
 ```
 yarn add lighthouse
 ```
 
-- Install Puppeteer
+<br> - Install Puppeteer
 
 ```
 yarn add puppeteer
 ```
 
-- Folder structure
+<br> - Folder structure
 
 ```
   perf
@@ -74,7 +74,7 @@ yarn add puppeteer
 
 ```
 
-- Lighthouse provides various options to configure as per convinces of your site. Which could be passed into a lighthouseSettings.json file something like I did below:
+<br> - Lighthouse provides various options to configure as per convinces of your site. Which could be passed into a lighthouseSettings.json file something like I did below:
 
 ```
  {
@@ -99,7 +99,7 @@ yarn add puppeteer
 }
 ```
 
-- Keep all the site related variables into one file, like siteConfig.json:
+<br> - Keep all the site related variables into one file, like siteConfig.json:
 
 ```
 {
@@ -111,6 +111,8 @@ yarn add puppeteer
   }
 }
 ```
+
+<br/>
 
 ### Launch browser using puppeteer and run our first test
 
@@ -160,6 +162,8 @@ if (require.main === module) {
 }
 
 ```
+
+<br/>
 
 ### Get the performance of authenticated sites using puppeteer
 
@@ -271,11 +275,13 @@ if (require.main === module) {
 }
 ```
 
-- Run your performance test, by using simple command:
+<br> - Run your performance test, by using simple command:
 
 ```
 node generatePerformanceReport.js
 ```
+
+<br/>
 
 ### How do we fix the performance related issues ?
 
@@ -285,13 +291,13 @@ There is a wonderful blog, which explains how such issues could fixed, continue 
 
 Never run the performance test on local machine, as the results would always fluctuating. Due to various factors affecting the run.
 
-- Internet traffic & routing changes
-- Testing on different devices, such as a high-performance desktop and a low-performance laptop
-- Browser extensions that inject JavaScript and add/modify network requests etc
+<br> - Internet traffic & routing changes
+<br> - Testing on different devices, such as a high-performance desktop and a low-performance laptop
+<br> - Browser extensions that inject JavaScript and add/modify network requests etc
 
 Hence always run it in a stable enviroment. So lets do something exciting, lets generate our performance reports using Github Actions.
 
-- Structure your github actions folders:
+<br> - Structure your github actions folders:
 
 ```
 
@@ -301,7 +307,7 @@ Hence always run it in a stable enviroment. So lets do something exciting, lets 
 
 ```
 
-- Lets proceed with configuring our yaml file
+<br> - Lets proceed with configuring our yaml file
 
 ```
 
@@ -327,6 +333,8 @@ jobs:
     - run: yarn install
     - run: node generatePerfReport.js
 ```
+
+<br/>
 
 _*Recommendation: You could also try posting your reports on Google drive. Shortly would be posting a article on how to upload reports to google drive*_
 

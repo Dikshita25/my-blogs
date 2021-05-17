@@ -13,24 +13,24 @@ InfluxDB is nothing new but a database, which is a time series database platform
 
 ### Installation of influxDB on MacOS
 
-1. Install InfluxDB service on your system
+<br> 1. Install InfluxDB service on your system </br>
 
 ```sh
 brew update
 brew install influxdb
 ```
 
-For other operating systems you may refer this link: [Installation links](https://docs.influxdata.com/influxdb/v1.7/introduction/installation/#installing-influxdb-oss).
+For other operating systems you may refer this link: [Installation links](https://docs.influxdata.com/influxdb/v1.7/introduction/installation/#installing-influxdb-oss)
 
 **_*Note: Default port used by influxDB is 8086*_**
 
-2. Start the service on your MacOS
+<br> 2. Start the service on your MacOS <br/>
 
 ```
 brew services start influxdb
 ```
 
-3. Now, let's jump inside the influxDB
+<br> 3. Now, let's jump inside the influxDB
 
 ```
 ➜  ~ influx
@@ -38,11 +38,13 @@ Connected to http://localhost:8086 version 1.8.2
 InfluxDB shell version: 1.8.2
 ```
 
-4. Stopping the InfluxDB service is easy.
+<br> 4. Stopping the InfluxDB service is easy.
 
 ```
 brew services stop influxdb
 ```
+
+</br>
 
 ### Concepts and terminologies used in InfluxDB
 
@@ -59,6 +61,8 @@ To list the created databases:
 ```
 show databases
 ```
+
+</br>
 
 #### Fields
 
@@ -108,19 +112,23 @@ For more details on InfluxDb, you may refer this [link](https://docs.influxdata.
 It's a visualization dashboard, which allows you to plot interactive and dynamic graphs. It provides plotting of data in different forms like, graphs, charts, alerts etc.
 
 You can plot beautiful graphs with time-series data, which is the exact requirement fulfilled by InfluxDB.
+</br>
 
 ### Install Grafana on MacOS
 
-1. Install Grafana service on your system
+<br> 1. Install Grafana service on your system
+</br>
 
 ```sh
 brew update
 brew install grafana
 ```
 
-Links for installing grafana on other operating systems are [here](https://grafana.com/docs/grafana/latest/installation/)
+<br> Links for installing grafana on other operating systems are [here](https://grafana.com/docs/grafana/latest/installation/)
+</br>
 
-2. Start the Grafana service using command
+<br> 2. Start the Grafana service using command
+</br>
 
 ```
 ➜  ~ brew services start grafana
@@ -129,12 +137,13 @@ Service `grafana` already started, use `brew services restart grafana` to restar
 
 _Note: Default port used by grafana is 3000 and the standard username/password after installation is admin/admin. Password can be changed after logging into the system_
 
-3. Access "http://localhost:3000/login" and login with admin/admin credentials.
-
+<br> 3. Access "http://localhost:3000/login" and login with admin/admin credentials.
+</br>
 Here's the first glance of the Grafana dashboard
 ![Grafana dashboard](/images/Grafana.png)
 
-4. Stopping the Grafana service is simple too
+<br> 4. Stopping the Grafana service is simple too
+</br>
 
 ```
 brew services stop grafana
@@ -143,24 +152,24 @@ brew services stop grafana
 ### Quering and building dashboards within Grafana
 
 Firstly, we need to connect the data-source which would provide us the data to plot dynamic graphs.
-
-Let's proceed with the steps required to connect InfluxDB with Grafana
-
-1. Start the influxDB service
-
-2. Start the grafana service
-
-3. Login to grafana dashboard and move to datasource section.
-
-There are couple of datasources which are provided by Grafana i.e:
-
-- Prometheus
-
-- Graphite
-
-- Open TSDB
-
-- InfluxDB and many more
+Let's proceed with the steps required to connect InfluxDB with Grafana.
+</br>
+<br> 1. Start the influxDB service
+</br>
+<br> 2. Start the grafana service
+</br>
+<br> 3. Login to grafana dashboard and move to datasource section.
+</br>
+</br> There are couple of datasources which are provided by Grafana i.e:
+</br>
+<br>- Prometheus
+</br>
+<br>- Graphite
+</br>
+<br>- Open TSDB
+</br>
+<br>- InfluxDB and many more
+</br>
 
 We would use InfluxDB, hence choose datasource as Influx add the required details regarding database, save the settings and success message should be shown.
 
@@ -170,28 +179,32 @@ Data source is working
 
 ![Datasource](/images/datasource.png)
 
-4. Now proceed creating a dashboard which would display the data related to a application or a system.
-
-5. Create a new dashboard, access the settings icon to rename it as **Grocerry Reports**
-
-6. Create a panel within the Dashboard, access the datasource and query the data as follows:
+<br> 4. Now proceed creating a dashboard which would display the data related to a application or a system.
+</br>
+<br> 5. Create a new dashboard, access the settings icon to rename it as **Grocerry Reports**
+</br>
+<br> 6. Create a panel within the Dashboard, access the datasource and query the data as follows:
 
 **In-order to get hands On, let's create 2 panels**
-
-1. Types of fruits which will be a pie chart, whose query would be something like
+</br>
+<br> 1. Types of fruits which will be a pie chart, whose query would be something like
 
 ```js
 SELECT "value" FROM "fruits" WHERE $timeFilter GROUP BY "type"
 ```
 
 ![Types of Fruits](/images/typesoffruits.png)
-
-2. Categorize fruits in terms of citrus, pome & stone which would be a bar guage representation, with query
+</br>
+<br> 2. Categorize fruits in terms of citrus, pome & stone which would be a bar guage representation, with query
 
 ```js
 SELECT "value" FROM "fruits" WHERE $timeFilter GROUP BY "category"
 ```
 
-![Categorized fruits](/images/categoryoffruits.png)
+<br>
 
+![Categorized fruits](/images/categoryoffruits.png)
+</br>
+<br>
 That's about it! I may have missed few things here for sure. Connect with me at [dikshitashirodkar25@gmail.com](dikshitashirodkar25@gmail.com), If you would like to know more, or comment down here :)
+</br>
