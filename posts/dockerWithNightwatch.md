@@ -1,5 +1,5 @@
 ---
-title: "Use NightwatchJS with Docker"
+title: "Shipping Docker - Learn to use Docker, with NightwatchJS"
 tags: ["docker", "ubuntu", "nightwatchJS", "javascript"]
 published: true
 date: "2021-07-14"
